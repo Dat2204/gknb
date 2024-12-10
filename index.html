@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu hỏi thú vị</title>
+  <style>
+    /* Thiết lập tổng quát */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fce4ec;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Hộp thoại chứa câu hỏi */
+    #modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 500px;
+    }
+
+    #question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Các nút */
+    .btn {
+      font-size: 18px;
+      padding: 12px 24px;
+      margin: 10px;
+      cursor: pointer;
+      border: 2px solid #d81b60;
+      border-radius: 5px;
+      background-color: #f8bbd0;
+      color: white;
+      transition: 0.3s;
+      min-width: 120px;
+    }
+
+    .btn:hover {
+      background-color: #d81b60;
+    }
+
+    /* Chỉnh sửa khi di chuột vào nút "Không" */
+    #noBtn.hovered {
+      background-color: #d81b60;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal chứa câu hỏi -->
+  <div id="modal">
+    <div id="question">Bạn có muốn tham gia gknb cùng burning không</div>
+    <button id="yesBtn" class="btn">Có</button>
+    <button id="noBtn" class="btn">Không</button>
+  </div>
+
+  <script>
+    // Lấy các nút
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    // Khi di chuột vào nút "Không", nút sẽ đổi thành "Có"
+    noBtn.addEventListener('mouseenter', () => {
+      noBtn.textContent = "Có"; // Chuyển thành "Có"
+      noBtn.classList.add('hovered');
+    });
+
+    // Khi chuột ra ngoài, "Không" trở lại
+    noBtn.addEventListener('mouseleave', () => {
+      noBtn.textContent = "Không"; // Trở lại "Không"
+      noBtn.classList.remove('hovered');
+    });
+
+    // Khi nhấn "Có", hiển thị thông báo cảm ơn
+    yesBtn.addEventListener('click', () => {
+      alert('Cảm ơn bạn đã đồng ý! 🥰');
+    });
+
+    // Khi nhấn "Không", hiển thị thông báo cảm ơn
+    noBtn.addEventListener('click', () => {
+      alert('Cảm ơn bạn đã đồng ý! 🥰');
+    });
+
+    // Chế độ cho màn hình di động - khi chạm vào nút "Không" sẽ chuyển thành "Có"
+    noBtn.addEventListener('touchstart', () => {
+      noBtn.textContent = "Có";
+      noBtn.classList.add('hovered');
+    });
+
+    // Khi chạm ra ngoài, "Không" trở lại
+    noBtn.addEventListener('touchend', () => {
+      noBtn.textContent = "Không";
+      noBtn.classList.remove('hovered');
+    });
+  </script>
+</body>
+</html>
